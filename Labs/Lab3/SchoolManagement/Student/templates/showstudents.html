@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome: {{name | capfirst}}</h2>
+    <h2>ur marks: {{marks}}</h2>
+    <h2>each marks: {{each }}</h2>
+
+    <h3>if, elif and else</h3>
+
+    {% if total > 250 %}
+    <p>Ex</p>
+    {% elif total < 250 and total > 200 %}
+    <p>Very Good</p>
+    {% else %}
+    <p>Goood</p>
+    {% endif %}
+
+    <h3>For Loop</h3>
+    <ul>
+    {% for sub, mark in each.items %}
+    <li>{{ sub }} : {{ mark }}</li>
+    {% endfor %}
+    </ul>
+
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
