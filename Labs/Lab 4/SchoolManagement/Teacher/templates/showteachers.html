@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container" dir="rtl">
+    <h2>بيانات المدرسين</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>الاسم الأول</th>
+                <th>الاسم الأخير</th>
+                <th>العمر</th>
+                <th>الجنس</th>
+                <th>التخصص</th>
+                <th>رئيس قسم</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+            <tr>
+                <td>{{ teacher.FirstName }}</td>
+                <td>{{ teacher.LastName }}</td>
+                <td>{{ teacher.Age }}</td>
+                <td>{{ teacher.Gender }}</td>
+                <td>{{ teacher.Specialization }}</td>
+                <td>{{ teacher.IsHeadOfDepartment }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
