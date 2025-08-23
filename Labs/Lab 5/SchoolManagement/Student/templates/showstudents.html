@@ -26,12 +26,12 @@
                         <td>{{ student.age }}</td>
                         <td>{{ student.level }}</td>
                         <td>{{ student.gpa }}</td>
-                        <td>{{ student.statust|yesno:"نشط,غير نشط" }}</td>
-                        <td>{{ student.reporet|truncatechars:50 }}</td>
+                        <td>{{ student.status|yesno:"نشط,غير نشط" }}</td>
+                        <td>{{ student.report|truncatechars:50 }}</td>
                         <td class="action-links">
-                            <a href="{% url 'student_detail' student.id %}">عرض التفاصيل</a> |
-                            <a href="{% url 'student_edit' student.id %}">تعديل</a> |
-                            <a href="{% url 'student_delete' student.id %}">حذف</a>
+                            <a href="{% url 'student:student_one' student.id %}">عرض التفاصيل</a> |
+                            <a href="{% url 'student:edit' student.id %}">تعديل</a> |
+                            <a href="{% url 'student:delete' student.id %}">حذف</a>  
                         </td>
                     </tr>
                     {% empty %}
@@ -40,6 +40,12 @@
                     </tr>
                     {% endfor %}
                 </tbody>
+                <tfoot>
+                    <td colspan="2">Student Count</td>
+                    <td colspan="4">{{ student_count }}</td>
+                    <td><a href="{% url 'student:newstudent' %}">اضافة</a></td>
+                    
+                </tfoot>
             </table>
         </body>
         </html>

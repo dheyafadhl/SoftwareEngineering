@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% block pageTitle %}
+        <div class="welcome-box2">قائمة الطلاب</div>
+    {% endblock %}
+    <div class="card mb-3 border border-primary m-5 p-5" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{student.id}}-{{ student.f_name }} {{ student.l_name }}</h5>
+                    <p class="card-text">العمر:{{ student.age }}<br>التقرير:{{ student.report }}</p>
+                    <p class="card-text">الحالة:{{ student.status }}<br>المعدل:{{ student.gpa }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
