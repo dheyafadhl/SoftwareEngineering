@@ -1,0 +1,106 @@
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .navbar a{
+            color:white;
+            text-decoration: none;
+        }
+        .navbar a:hover{
+            text-decoration: underline;
+        }
+        .container {
+            margin: 2rem auto;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* التنسيق الرئيسي لصندوق المحتوى */
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف للصندوق */
+            border-radius: 10px; /* حواف دائرية */
+            border: 1px solid #007bff; /* إطار أزرق مطابق للكود */
+        }
+
+        /* تنسيق عنوان الصندوق */
+        .card-title {
+            font-size: 1.5rem; /* حجم خط أكبر */
+            font-weight: bold; /* خط عريض */
+            color: #343a40; /* لون نص داكن */
+            border-bottom: 2px solid #007bff; /* خط سفلي لتمييز العنوان */
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* تنسيق نص تفاصيل الطالب */
+        .card-text {
+            font-size: 1rem; /* حجم الخط العادي */
+            color: #6c757d; /* لون نص رمادي */
+            line-height: 1.6; /* تباعد الأسطر لسهولة القراءة */
+            margin-bottom: 10px; /* مسافة أسفل كل سطر */
+        }
+
+        /* تنسيق welcome-box2 */
+        .welcome-box2 {
+            background-color: #007bff; /* لون خلفية أزرق */
+            color: white; /* لون نص أبيض */
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            font-size: 2rem; /* حجم خط كبير */
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px; /* حواف دائرية */
+            letter-spacing: 1px; /* تباعد بين الحروف */
+        }
+
+        /* تنسيق الفواصل <br> */
+        .card-text br {
+            display: none; /* إخفاء فواصل الأسطر الافتراضية */
+        }
+
+        /* تنسيق الأسطر المنفصلة */
+        .card-text span {
+            display: block; /* عرض كل معلومة في سطر جديد */
+            margin-top: 5px; /* مسافة بين المعلومات */
+        }
+
+        /* لتحسين التنسيق على الشاشات الأصغر */
+        @media (max-width: 576px) {
+            .card {
+                margin: 10px !important;
+                padding: 20px !important;
+            }
+        }

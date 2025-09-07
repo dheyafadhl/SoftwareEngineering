@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}تفاصيل الطالب: {{ student.f_name }}{% endblock %}
+
+{% block content %}
+<div class="card mb-3 shadow-sm">
+    <div class="row g-0">
+        <div class="col-md-4 text-center p-3">
+             {% if student.image %}
+                <img src="{{ student.image.url }}" class="img-fluid rounded" alt="صورة {{ student.f_name }}" style="max-height: 300px;">
+            {% else %}
+                <i class="fas fa-user-circle fa-8x text-muted"></i>
+                <p class="mt-2 text-muted">لا توجد صورة</p>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">{{ student.f_name }} {{ student.l_name }}</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>العمر:</strong> {{ student.age }}</li>
+                    <li class="list-group-item"><strong>المستوى الدراسي:</strong> {{ student.get_level_display }}</li>
+                    <li class="list-group-item"><strong>المعدل (GPA):</strong> {{ student.gpa }}</li>
+                    <li class="list-group-item">
+                        <strong>الحالة:</strong>
+                        {% if student.status %}
+                            <span class="badge bg-success">فعال</span>
+                        {% else %}
+                            <span class="badge bg-danger">غير فعال</span>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item"><strong>التقرير:</strong> {{ student.report }}</li>
+                    <li class="list-group-item">
+                        <strong>ملف التقرير:</strong>
+                        {% if student.file_report %}
+                            <a href="{{ student.file_report.url }}" download>تحميل الملف</a>
+                        {% else %}
+                            <span>لا يوجد ملف مرفق</span>
+                        {% endif %}
+                    </li>
+                </ul>
+                 <div class="mt-3">
+                    <a href="{% url 'student:edit' student.id %}" class="btn btn-warning">تعديل</a>
+                    <a href="{% url 'student:show' %}" class="btn btn-secondary">العودة للقائمة</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

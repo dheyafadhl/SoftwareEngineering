@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}تأكيد الحذف{% endblock %}
+
+{% block content %}
+<h1>تأكيد حذف المدرس</h1>
+<p>هل أنت متأكد من أنك تريد حذف المدرس: <strong>{{ teacher.first_name }} {{ teacher.last_name }}</strong>؟</p>
+<p class="text-danger">لا يمكن التراجع عن هذا الإجراء.</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">نعم، قم بالحذف</button>
+    <a href="{% url 'Teacher:list' %}" class="btn btn-secondary">إلغاء</a>
+</form>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}قائمة الطلاب{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2">قائمة الطلاب ({{ student_count }})</h1>
+    <div>
+        <a href="{% url 'student:show' %}?q=True" class="btn btn-sm btn-primary">منتظم</a>
+        <a href="{% url 'student:show' %}?q=False" class="btn btn-sm btn-warning">غير منتظم</a>
+        <a href="{% url 'student:show' %}?q=all" class="btn btn-sm btn-success">الكل</a>
+    </div>
+        <a href="{% url 'student:newstudent' %}" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>إضافة طالب جديد
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>الصورة</th>
+                        <th>الاسم الكامل</th>
+                        <th>العمر</th>
+                        <th>المستوى</th>
+                        <th>المعدل</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.id }}</td>
+                        <td>
+                            {% if student.image %}
+                                <img src="{{ student.image.url }}" alt="{{ student.f_name }}" class="rounded-circle" width="50" height="50">
+                            {% else %}
+                                <span class="text-muted">N/A</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ student.f_name }} {{ student.l_name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.level }}</td>
+                        <td>{{ student.gpa }}</td>
+                        <td>
+                            {% if student.status %}
+                                <span class="badge bg-success">فعال</span>
+                            {% else %}
+                                <span class="badge bg-danger">غير فعال</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'student:student_one' student.id %}" class="btn btn-sm btn-info" title="عرض التفاصيل"><i class="fas fa-eye"></i></a>
+                            <a href="{% url 'student:edit' student.id %}" class="btn btn-sm btn-warning" title="تعديل"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'student:delete' student.id %}" class="btn btn-sm btn-danger" title="حذف"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">لا يوجد طلاب لعرضهم.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
