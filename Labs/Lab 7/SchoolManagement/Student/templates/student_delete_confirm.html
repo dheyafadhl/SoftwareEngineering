@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}تأكيد الحذف{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h2>تأكيد الحذف</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">هل أنت متأكد أنك تريد حذف الطالب: <strong>{{ student.f_name }} {{ student.l_name }}</strong>؟</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'student:show' %}" class="btn btn-secondary">إلغاء</a>
+                    <button type="submit" class="btn btn-danger">نعم، قم بالحذف</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

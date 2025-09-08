@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إرسال ملخص المشروع</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #333333;
+            color: #E0E0E0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto px-6 py-12 max-w-3xl">
+        <h1 class="text-3xl font-bold mb-2 text-center text-white">إرسال ملخص المشروع</h1>
+        <p class="text-center text-gray-400 mb-8">املأ النموذج التالي لإرسال تفاصيل مشروعك إلى مدرس المادة.</p>
+
+        {% if message %}
+            <div class="p-4 mb-4 text-sm rounded-lg {% if success %} bg-green-900/50 text-green-300 {% else %} bg-red-900/50 text-red-300 {% endif %}">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <div class="bg-[#424242] p-8 rounded-lg border border-gray-700 shadow-lg">
+            <form method="post">
+                {% csrf_token %}
+                <div class="space-y-6">
+                    {{ form.as_p }}
+                </div>
+                <div class="mt-8 text-left">
+                    <button type="submit" class="bg-[#25A6B7] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#208a99] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-[#25A6B7] transition-colors">
+                        إرسال البريد
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

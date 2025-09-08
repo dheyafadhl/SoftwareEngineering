@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}قائمة المدرسين{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h2">إدارة المدرسين</h1>
+    <a href="{% url 'Teacher:create' %}" class="btn btn-primary">إضافة مدرس جديد</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>الاسم الكامل</th>
+                    <th>التخصص</th>
+                    <th>القسم</th>
+                    <th>إجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                <tr>
+                    <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
+                    <td>{{ teacher.specialization }}</td>
+                    <td>{{ teacher.department.name }}</td>
+                    <td>
+                        <a href="{% url 'Teacher:update' teacher.id %}" class="btn btn-sm btn-outline-primary">تعديل</a>
+                        <a href="{% url 'Teacher:delete' teacher.id %}" class="btn btn-sm btn-outline-danger">حذف</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">لا يوجد مدرسون حتى الآن.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

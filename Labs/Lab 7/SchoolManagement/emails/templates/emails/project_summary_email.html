@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        /* أنماط عامة لضمان التوافق مع أغلب برامج البريد */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            direction: rtl;
+            text-align: right;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #25A6B7; /* اللون الرئيسي للتصميم */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 30px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #25A6B7;
+            border-bottom: 2px solid #eeeeee;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        .footer {
+            background-color: #333333; /* لون خلفية التذييل الداكن */
+            color: #eeeeee;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ title }}</h1>
+        </div>
+
+
+        <div class="content">            
+            {{ body|linebreaksbr }}
+            
+
+            {% if closing_remarks %}
+                <p>{{ closing_remarks|linebreaksbr }}</p>
+            {% endif %}
+            
+            <br>
+            <p>تحياتي الطيبة،</p>
+            <p><strong>{{ student_name }}</strong></p>
+        </div>
+
+        <div class="footer">
+            <p>تم الإرسال في: {{ sent_at }}</p>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}تفاصيل المدرس{% endblock %}
+
+{% block content %}
+<h1>تفاصيل المدرس: {{ teacher.first_name }} {{ teacher.last_name }}</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">المعلومات الشخصية</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>الاسم الأول:</strong> {{ teacher.first_name }}</li>
+            <li class="list-group-item"><strong>الاسم الأخير:</strong> {{ teacher.last_name }}</li>
+            <li class="list-group-item"><strong>العمر:</strong> {{ teacher.age }}</li>
+            <li class="list-group-item"><strong>الجنس:</strong> {{ teacher.gender }}</li>
+            <li class="list-group-item"><strong>التخصص:</strong> {{ teacher.specialization }}</li>
+            <li class="list-group-item"><strong>رئيس قسم:</strong> {% if teacher.is_head_of_department %}نعم{% else %}لا{% endif %}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'teacher:show' %}" class="btn btn-secondary">العودة إلى القائمة</a>
+    <a href="{% url 'teacher:edit' teacher.id %}" class="btn btn-warning">تعديل</a>
+</div>
+{% endblock %}
